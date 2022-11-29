@@ -1,0 +1,60 @@
+{% extends 'registration/base/base.html' %}
+{% load static %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block stylefiles %}
+        <link rel="stylesheet" href="{% static 'registration/styles/index.css' %}">
+{% endblock %}
+
+{% block body %}
+<span>
+  <form method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <span>
+        <h2>Unaishi wapi</h2> 
+         
+       
+         <p>{{ otherDetails.addres}}</p>
+         
+    </span>
+    <br>
+    <br>
+     <span>
+         <h2>Are you specialist?</h2>
+         <h3>Which professional you have</h3>
+         <label>Choose a professonal here
+            <p>{{ otherDetails.prfssn }}</p>
+         </label>
+         <label>jinsia
+            <p>{{ otherDetails.gend }}</p>
+         </label>
+     </span>
+     <br>
+     <br>
+     <span>
+         <h2>Now uplaod your profile photo</h2>
+        <p>{{ otherDetails.image }}</p>
+        <p>Description {{ otherDetails.description }}</p>
+     </span>
+     <span>
+         <h2>mawasiliano yangu</h2>
+         <label> 
+            <p>{{ contactform.as_p }}</p>
+         </label>
+ 
+     </span>
+     <br>
+     <br>
+
+     <span>
+         <input type="submit" value="complete" name="submit">
+     </span>
+  </form>
+</span>
+
+{%  endblock %}
+
+  

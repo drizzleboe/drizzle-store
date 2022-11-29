@@ -1,0 +1,27 @@
+{% extends 'registration/base/base.html' %}
+{% load static %}
+{%  block title %}order placement{% endblock %}
+{% block stylefiles %}
+    <link rel="stylesheet" href="{% static 'registration/styles/index.css' %}">
+{% endblock %}
+
+{% block body %}
+<div id="division">
+    <div id="top-head">
+        <p id="prag">drizzle store tutatumia <b>email</b> au <b>namba yako</b> ili kuwasiliana na wewe.</p>
+    </div>
+    <div id="order-form">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+            <input type="submit" value="Tuma">
+            <p>Ili kiuepuka kujaza fomu hii wakati mwingine 
+                unapohitaji kununua bidhaa, tafadhali 
+                <a href="{% url 'login' %}">ingia kwenye akaunti yako </a>
+                au <a href="{% url 'register' %}">Fuangua akaunti mpya </a> 
+                kama hauna akaunti!
+            </p>
+            </form>
+    </div>
+</div>
+{% endblock%}

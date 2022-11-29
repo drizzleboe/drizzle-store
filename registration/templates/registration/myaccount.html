@@ -1,0 +1,38 @@
+{% extends 'registration/base/base.html' %}
+{% load static %}
+
+{% block title %}
+    My account
+{% endblock %}
+{% block stylefiles %}
+<link rel="stylesheet" href="{% static 'registration/styles/index.css' %}">
+{% endblock %}
+
+{% block body %}
+
+      {%  if userfound %}
+      {% for message in messages%}
+                <p id="message">{{message}}</p>
+      {% endfor %}
+      <h1>akaunti yangu</h1>
+      <p>{{ user.first_name}} {{ user.last_name }}</p>
+      <p><a href=""><img src="{{ user.image.url }}" alt="profile img"></a> </p>
+      <p><b>online</b></p>
+      
+      <div>
+        <h3>Jumla ya order</h3>
+        <p>{{ user_orders }}</p>
+      </div>
+      <span>
+        <a href="">kikapu</a>
+      </span>
+
+      <p><b><a href="{% url 'settings' %}">settings</a></b></p>      
+
+      <p><a href="{% url 'logout' %}">toka nje ya akaunti yangu</a></p>
+      <p><a href="{% url 'products' %}">endelea na manunuzi</a></p>
+      {% else %}
+      <p>page not found..!</p>
+      {% endif %}
+    </form>
+{% endblock %}

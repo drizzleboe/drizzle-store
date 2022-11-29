@@ -1,0 +1,48 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <h3><a href="{% url 'index' %}">drizzle store</a></h3>
+    {% block stylefiles %}
+    
+    {% endblock %}
+</head>
+<body>
+    {% block header %}
+        <div id = 'accounts'>
+            <p><a href="{% url 'login' %}">Akaunti yangu</a></p>
+            <p><a href="{% url 'register' %}">Fungua Akaunti</a></p>
+       </div>
+       
+       <div id="links">
+        <a href="{% url 'index' %}">Nyumbani</a><br>
+          <a href="{% url 'products' %}">products</a><br>
+          <a href="">collection</a><br>
+          <a href="{% url 'about' %}">Kuhusu sisi</a><br>
+          <a href="{% url 'faqs' %}"><abbr title="Maswali Yaulizwayo Mara kwa mara">MYM</abbr></a><br>
+         <a href="{% url 'contact_page' %}">wasiliana nasi</a><br>
+          
+       </div>
+    {% endblock %}
+    {% block body %}{% endblock %}
+    {% block footer %}{% endblock %}
+</body>
+{% block foooter %}
+<span><br><br>
+    Email:<a href="mailto:drizzle.services@gmail.com">drizzle.services@gmail.com</a><br>
+    Tigo:<a href="tel:0710764200">0710764200</a><br>
+    Vodacom:<a href="tel:0746014200">0746014200</a><br>
+    Halotel:<a href="tel:0624710200">0624710200</a><br>
+    <a href="">Facebook</a>
+    <a href="">whatsapp</a>
+    <a href="">instagram</a>
+  </span>
+  <br>
+  hakimiliki &copy{{ year }} drizzle services
+{% endblock %}
+</html>

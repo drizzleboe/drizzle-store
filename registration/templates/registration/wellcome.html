@@ -1,0 +1,32 @@
+{% extends 'registration/base/base.html' %}
+{% load static %}
+{%  block title %}congratulations{%  endblock %}
+{% block stylefiles %}
+       
+{%  endblock %}
+
+{% block body %}
+<div>
+    <h3>Congratulations..!</h3>
+<p>You have succeeded created an account in <b>fundi chap chap</b>
+Now you are visible and available everywhere, Customers and other
+peoples in need of you will contact you any time through <a href=""><b>email</b>.</a>
+ and phone or sms. 
+ </p>
+</div>
+<div>
+    <h4>Customize your profile</h4>
+    <p> You can make your profile quite unique and attractive to 
+        custommers by adding some interesting pictures 
+        conserning your work and some solutions you have solved
+        or provided to your clients
+    </p>
+        <div>
+            <form>
+                {% csrf_token %}
+             
+            </form>
+            <P>The names of the user are {{ user }}</P>
+        </div>
+</div>
+{% endblock %}

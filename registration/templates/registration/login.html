@@ -1,0 +1,84 @@
+{% extends 'registration/base/base.html' %}
+{% load static %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block stylefiles %}
+        <link rel="stylesheet" href="{% static 'registration/styles/index.css' %}">
+{% endblock %}}
+
+{% block body %}
+<div class="container">
+    <div class="signin-signup">
+        <form action="{% url 'login' %}" class="sign-in-form" method="post">
+                {% csrf_token %}
+            <h2 class="title">Ingia kwenye akaunti yangu</h2>
+           <div class="input-field">
+            <i class="fas fa-user"></i>
+                {% if failed %}
+                <p>umekosea email yako au password</p>
+                {% endif %}
+                {% for message in messages%}
+                <p id="success-message">{{message}}</p>
+                {% endfor %}
+               {{  signin_form.as_p }}
+               
+           </div>
+            <input type="submit" value="ingia" class="btn"> 
+            <a href="">nimesahau password yangu!</a>
+            <p class="social-text"></p>
+            <div class="social-media">
+                <a href="#" class="social-icon">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="social-icon">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            
+            <p class="account-text">Sina akaunti? <a href="{% url 'register' %}" id="sign-up-btn2">fungua akaunti</a></p>
+        </form>
+        <p><a href="{% url 'index' %}">rudi mwanzo</a></p>
+        <div>
+            <h3>Faida za kufungua akaunti</h3>
+            <ul>
+                    <li><a href="{% url 'register' %}">rahisi kununua bidhaa</a></li>
+                    <li><a href="{% url 'register' %}">kupata taarifa za usafirishwaji wa bidhaa yako</a></li>
+                    <li><a href="{% url 'register' %}">kupata ofa na punguzo la bei</a></li>
+                    <li><a href="{% url 'register' %}">kuhifadhi kumbukumbu za manunuzi yako</a></li>
+                    
+            </ul>
+    </div>
+
+{% endblock %}
+
+  
+
+
+
+
+<!--
+    LOGIN FORM
+    <div class="input-field">
+    <i class="fas fa-user"></i>
+    <input type="text" placeholder="Username">
+</div>
+
+<div class="input-field">
+    <i class="fas fa-lock"></i>
+    <input type="password" placeholder="password">
+</div> 
+-->
+
+<!--
+    SIGNUP FORM
+         
+-->

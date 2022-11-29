@@ -1,0 +1,20 @@
+<div>
+    <p style="background-color: red; color:white;  padding: 10px; margin: 20px;">
+        {{ fname }}  {{ lname }}
+    </p>
+
+    <p style="background-color: red; color:white;  padding: 10px; margin: 20px;">
+        {{ prfssn.name }}
+    </p>
+    
+            <img src="{{ image }}" alt="image" width="700px" height="300px" fit-content="">
+   <p style="background-color: red; color:white; padding: 10px; margin: 20px;">
+        {{ phone_no }}
+    </p>
+    <p>huyu fundi anaumri wa miaka {{ age }}</p>
+    <h2 style="margin-left: 30px; color:black;">
+        <a href="{% url 'services' slug %}"> ona zaidi kuhusu huyu fundi</a>
+    </h2>
+
+<br><br>
+ </div>

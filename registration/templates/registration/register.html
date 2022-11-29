@@ -1,0 +1,30 @@
+{% extends 'registration/base/base.html' %}
+{% load static %}
+
+{% block title %}
+    signup
+{% endblock %}
+
+{% block stylefiles %}
+        <link rel="stylesheet" href="{% static 'registration/styles/index.css' %}">
+{% endblock %}
+
+{% block body %}
+        <form method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+        <h2 class="title">Fungua akaunti</h2> 
+        {% for message in messages%}
+        <p id="warnig-message">{{message}}</p>
+        {% endfor %}              
+                {{ form.as_p }}
+             
+        <input type="submit" name="submit" value="tuma"> 
+        <p>Nina akaunti <a href="{% url 'login' %}">Ingia kwenye akaunti yangu</a></p>
+        </form>
+
+       {% if notcreated %}
+        <p>Akaunti haijatengenezwa!</p>       
+       {% endif %}
+{% endblock %}
+
+  

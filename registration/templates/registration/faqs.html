@@ -1,0 +1,24 @@
+{% extends 'registration/base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}faqs{% endblock %}</title>
+    {% block stylefiles %}{% endblock %}
+</head>
+
+
+    {% block body %}
+    <h1><b>M</b>aswali <b>Y</b>aulizwayo <b>M</b>ara kwa mara (MYM)</h1>
+            {%for faq in faqs%}
+                <div id="questions" style="background-color: rgb(213, 222, 222);">
+                    <h2 id="heading">{{ faq.question }}</h2>
+                    <p id="prag">{{ faq.answer }}</p>
+                </div>
+
+            {% endfor %}
+
+    {% endblock %}

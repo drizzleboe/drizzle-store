@@ -1,0 +1,59 @@
+{% extends 'registration/base/base.html' %}
+{% load static %}
+
+    {% block stylefiles %}
+    
+    {% endblock %}
+</head>
+<body>
+    {% block header %}
+    {% endblock %}
+    {% block body %}
+    <div class="container">
+        <div class="signin-signup">
+            <h3>mmiliki</h3>
+            <h2 class="title">Ingia kwenye akaunti yangu</h2>
+            <form action="{% url 'login' %}" class="sign-in-form" method="post">
+                    {% csrf_token %}
+                
+               <div class="input-field">
+                <i class="fas fa-user"></i>
+                    {% if failed %}
+                    <p>umekosea email yako au password</p>
+                    {% endif %}
+                    {% for message in messages%}
+                    <p id="success-message">{{message}}</p>
+                    {% endfor %}
+                   {{  signin_form.as_p }}
+                   
+               </div>
+                <input type="submit" value="ingia" class="btn"> 
+                <a href="">nimesahau password yangu!</a>
+                <p class="social-text"></p>
+                <div class="social-media">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                
+            </form>
+       
+           
+    
+    {% endblock %}
+
+    {% block footer %}{% endblock %}
+</body>
+{% block foooter %}
+
+{% endblock %}
+</html>

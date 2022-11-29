@@ -1,0 +1,16 @@
+{% extends 'registration/base/base.html' %}
+{% load static %}
+
+{% block body %}
+<h1>wasiliana nasi</h1>
+<p>weka email yako na namba yako ya simu, kisha chagua ni mda gani unapendelea 
+    <a href="{% url 'index' %}">drizzle store</a> kuwasiliana nawewe
+</p>
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="button" name="contact_button" value="tuma">
+    </form>
+</div>
+{% endblock %}

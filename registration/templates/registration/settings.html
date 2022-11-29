@@ -1,0 +1,26 @@
+{% extends 'registration/base/base.html' %}
+{% load static %}
+
+{% block title %}
+    settings
+{% endblock %}
+
+{% block stylefiles %}
+        <link rel="stylesheet" href="{% static 'registration/styles/index.css' %}">
+{% endblock %}
+
+{% block body %}
+        <form method="POST" action="{% url 'settings' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+        <h2 class="title">Update your account settings</h2> 
+        <p id="success-message">{{message}}</p>              
+             <form action="" method="post">
+                     {% csrf_token %}
+                     {{form.as_p}}
+             </form>
+             <input type="submit" name="badili" value="save">
+        </form>
+      
+{% endblock %}
+
+  

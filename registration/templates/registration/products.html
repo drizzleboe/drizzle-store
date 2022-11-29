@@ -1,0 +1,47 @@
+{% extends 'registration/base/base.html' %}
+{% load humanize %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <h3><a href="{% url 'index' %}">drizzle store</a></h3>
+    {% block stylefiles %}
+        <link rel="stylesheet" href="{% static 'registration/styles/index.css' %}">
+    {% endblock %}
+</head>
+
+    {% block body %}
+    <form action="" method="get">
+    
+      {{ prdctFilter.form }}
+      <button type="submit" name="searchbutton">tafuta</button>
+  </form>
+ 
+      <div id="product">
+        
+          {% for product in products %}
+                <div id="service" style="padding-left: 20%;margin: 50px;">
+                    <a href="index/{{ product.slug }}"><img width=500px height=300px src="{{product.image}}" alt="image" style="padding-top: 10%;" ></a>
+                    <div>{{ product.title }}</div>
+                    <div><p><b>Tsh:{{ product.price|intcomma }}</b> kutoka   <del>Tsh:{{ product.comparable_price|intcomma }}</del></p></div>
+                    <div>
+                      <a href="index/{{ product.slug }}">Angalia zaidi</a>
+                    </div>
+                    <div id="more">
+                        {{ product.description }}
+                    </div>
+                    
+                  </div>
+           
+          {% endfor %}
+          {% if not products %}
+          <div>
+            <p>bidhaa uliyotafuta haipo, jaribu kuweka maneno machache</p>
+          </div>
+          {% endif %}
+      </div>
+    {% endblock %}

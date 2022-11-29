@@ -1,0 +1,92 @@
+{% extends 'registration/base/base.html' %}
+{% load humanize %}
+{% load static %}
+
+
+
+    {%  block title %}more details{% endblock %}
+    {% block stylefiles %}
+          <link rel="stylesheet" href="{% static 'registration/styles/index.css' %}">
+    {% endblock %}
+
+   {% block body %}
+   {% if available %}
+
+
+   <div id="product-image">
+        
+                <img src="{{ user.image.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% if  image1  %}
+               <img src="{{ user.image1.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+               {% if image2 %}
+               <img src="{{ user.image2.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+               {% if image3 %}
+               <img src="{{ user.image3.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+               {% if image4 %}
+               <img src="{{ user.image4.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+               {% if image5 %}
+               <img src="{{ user.image5.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+               {% if image6 %}
+               <img src="{{ user.image6.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+               {% if image7 %}
+               <img src="{{ user.image7.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+               {% if image8 %}
+               <img src="{{ user.image8.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+               {% if image9 %}
+               <img src="{{ user.image9.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+               {% if image10 %}
+               <img src="{{ user.image10.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+               {% if image11 %}
+               <img src="{{ user.image11.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+               {% if image12 %}
+               <img src="{{ user.image12.url }}" alt="image" width="700px" height="300px" fit-content="">
+               {% endif %}
+
+   </div>
+   <div id="product-title">
+        <h2>{{ user.title }}</h2>
+   </div>
+   <div>
+     <p><b>Tsh:{{ user.price|intcomma }}</b> kutoka  <del><i>Ths:{{ user.comparable_price|intcomma }}</i></del></p>
+   </div>
+   <div><p>drizzle store</p></div>
+   <div id="product-description">
+    <p style="background-color: blue; color:aliceblue">  <b>{{ user.more }}</b></p>
+   </div>
+    <form action="" method="get">
+      <input type="hidden" name="cartproduct" value="{{ user.slug }}">
+      <a href="{% url 'cart' %}"><input class="cartbutton" type="submit" name="cartbutton" value="adding to cart"></a><br><br>
+    </form>
+   {% if not signed_in %}
+   <a href="order/?slug={{ user.slug }}"><button class="buybutton">nunua bidhaa</button></a>
+  {% else %}
+    <form action="" method="get">
+      
+      <input type="hidden" name="title" value="{{ user.title }}">
+      <input type="hidden" name="desc" value="{{ user.description }}">
+      <input type="hidden" name="username" value="{{ signed_in.first_name }} {{signed_in.last_name}}">
+      <input type="hidden" name="phone" value="{{ signed_in.phone }}">
+      <input type="hidden" name="email" value="{{ signed_in.email }}">
+      <a href="order/?slug={{ user.slug }}"><input class="buybutton" type="submit" name="buybutton" value="nunua bidhaa"></a>
+    </form>
+   {% endif %}
+   </label>
+ 
+   
+   {% else %}
+   <p>Page not found..!</p>
+   {% endif %}
+ 
+   {% endblock %}
+ 

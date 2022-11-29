@@ -1,0 +1,15 @@
+{% extends 'registration/base/base.html' %}
+{% load static %}
+
+{% block stylefiles %}
+{% endblock %}
+
+{% block body %}
+
+{% for user in users %}
+    {% if user.location.location == "kambini" %}
+        {% include 'registration/frequent/frequent.html' with name=user.name image=user.image.url phone_no=user.phone_no age=user.age slug=user.slug%}
+    {% endif %}
+{% endfor %}
+
+{% endblock %}

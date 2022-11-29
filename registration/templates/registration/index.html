@@ -1,0 +1,142 @@
+{% extends 'registration/base/base.html' %}
+{% load humanize %}
+{% load static %}
+
+    {%  block title %}index file{% endblock %}
+    {% block stylefiles %}
+        <link rel="stylesheet" href="{% static 'registration/styles/index.css' %}">
+    {% endblock %}
+
+{% block body %}
+
+{% if normal %}
+<div id="top"> 
+  <form action="" method="get">
+      {{ prdctFilter.form }}
+      <button type="submit" name="searchbutton" value="search">tafuta</button>
+  </form>
+ 
+  {% for image in images%}
+  <div id="top-image">
+    <a href=""><img width=300px height=200px src="{{image.image}}" alt="image" style="padding-top: 10%;" ></a>
+  <div id="image-desc">
+      {{ image.desc }}
+  </div>
+</div>
+{% endfor %}
+<div>
+  <a href="#after_sub"nenda kwenye subscribe>nenda kwenye subscribe</a>
+  <h1 id="this_top">Karibu drizzle services kwa mahitaji yote kuhusu teknolojia na mawasiliano</h1>
+  <a class="btn" href="{% url 'subscription' %}">Kuwa wakwanza</a>
+</div>
+<div>
+    <p>Watu wengi wamekuwa wakihitaji huduma bora za kuhusu teknolojia na nawasiliano
+      mfano Kufunga CCTV camera, kumiliki Tovuti au website, kwaajili ya kutangaza biashara zao
+      pia huduma mbalimbali za kiufundi nk. drizzle services tunatoa huduma zote zinazohusu teknolojia 
+      na mawasiliano.
+    </p>
+    <a class="btn" href="{% url 'contact_page' %}">wasiliana nasi</a>
+</div>
+<div id="foo">
+  <h1>Huduma tunazotoa</h1>
+  {% for field in user %} 
+  <div id="service" style="background-color: aliceblue;padding-left: 20%;margin: 50px;">
+    <a href="index/{{ field.slug }}"><img width=500px height=300px src="{{field.image}}" alt="image" style="padding-top: 10%;" ></a>
+  <p>{{ field.title }} </p>
+  <p><b>Tsh:{{ field.price|intcomma }}</b> 
+     <del><i>{% if  field.comparable_price  %}
+                {{ field.comparable_price|intcomma }}
+              {% endif %}
+      </i></del></p>
+  <p>{{ field.description }}</p>
+  <p><a href="index/{{ field.slug }}">Angalia zaidi</a></p>
+   
+    
+
+  
+ 
+  </p>
+  <br>
+  </div>
+ 
+  {% endfor %}
+</div>
+{% elif filtered %}
+      
+      <div id="foo">
+        <h1>Choose an expert here for cheap and faster solution </h1>
+        {% for field in selected_users %}
+        <img width=1000px height=400px src="{{field.image}}" alt="image">
+    
+        <p><a href="index/{{ field.id }}">More details</a></p>
+        
+        <br>
+       
+        {% endfor %}
+      </div>
+      
+{% endif %}
+<div>
+  <h2>Masaa ya kazi</h2>
+  <ul>
+    <li>juma tatu - ijumaa:8am - 6pm</li>
+    <li>jumamosi: 9am - 3pm</li>
+    <li>jumapili: Tumefunga</li>
+    <a class="btn" href="mailto:drizzle.services@gmail.com">acha ujumbe</a>
+  </ul>
+</div>
+<div>
+    <h2>
+      Nahitaji huduma nyingine  
+    </h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ otherService.as_p }}
+        <input type="submit" value="Tuma" class="btn" name="otherBut">
+    </form>
+</div>
+<div>
+  <h2>
+    Maoni yangu
+  </h2>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{  comments.as_p }}
+    <input type="submit" value="Tuma" class="btn" class="comment" name="commentBut" onclick="">
+  </form>
+  <script>
+    function thanks(){
+        var x = document.getElementsByClassName("comment");
+        window.alert("Tunashukuru kwa maoni yako."); 
+        
+     }
+  </script>
+</div>
+<div>
+  <h2>Timu ya drizzle services</h2>
+  {% for i in staff %}
+  <img width=600px height=400px src="{{i.image}}" alt="image">
+  <p> {{ i.full_name }}</p>
+  <p>Kitengo: {{ i.department }}</p>
+  {% endfor %}
+</div>
+<h2>
+    ofisi zetu
+</h2><br><br>
+//google map <br><br>
+<form action="" method="post">
+  {% csrf_token %}
+
+  <h2>subscribe tovuti yetu</h2>
+  <p id = 'after_sub'>weka email yako ili usikose <b>taarifa</b> na <b>ofa</b> mbalimbali kutoka drizzle services</p>
+  
+  {{  subscriberForm.as_p }}
+  {% for message in messages%}
+  <p id="success-message">{{message}}</p>
+  {% endfor %}
+  <input type="submit" value="subscribe" class="btn" name="subBut" class="subscribe onclick="">
+</form>
+<a href="#this_top">rudi juu</a>
+{% endblock %}
+
+
